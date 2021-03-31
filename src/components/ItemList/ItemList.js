@@ -10,25 +10,17 @@ const ItemList = ({productos}) => {
 
     const productosCargados = productos.map( (product) => {
         console.log(product.id)
-        if (product.id < 7){
+
             return <Item key={product.id} product={product} />;
-        }
+
     })
 
-    const productosCargadosSegundaFila = productos.map( (product) => {
-        console.log(product.id)
-        if (product.id >= 7){
-            return <Item key={product.id} product={product} />;
-        }
-    })
+
 
     return (
         <div>
-        <div className="d-flex justify-content-sm-around h-75">
+        <div className="d-flex justify-content-sm-around h-75 text-decoration-none">
             {productosCargados};
-        </div>
-        <div className="d-flex justify-content-sm-around h-75">
-            {productosCargadosSegundaFila};
         </div>
         </div>
     );

@@ -3,15 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {NavBar} from './components/NavBar/NavBar.js';
-import {ItemListContainer} from './components/ItemListContainer/ItemListContainer.js';
-import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer.js";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <NavBar /> 
-    <ItemDetailContainer />
-    <ItemListContainer /> 
+      <App ></App>
   </React.StrictMode>,
   document.getElementById('root')
 );

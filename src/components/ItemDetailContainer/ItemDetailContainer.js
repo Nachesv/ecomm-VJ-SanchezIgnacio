@@ -1,31 +1,27 @@
 
 import React, {useState, useEffect} from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail.js'
+import { useParams } from "react-router-dom";
+import productList from "./productList";
 
-
-const getItems = () => {  
-
-
-    return new Promise((resolve)=>{
-      setTimeout(() => {
-        resolve(    {
-            imagen: "././images/dualshock-negro.jpg",
-            nombre: "DualShock 4",
-            precio: "$8079",
-            descripcion: "Joystick de Playstation 4",
-            id: 1,
-          });
-      }, 2000);
-    });
-}
 
 export default function ItemDetailContainer() {
-    const [item, setItem] = useState(null)
-    useEffect(() => {
-        getItems().then((res)=> setItem(res))
-        return;
-    }, [])
+  const [item, setItem] = useState([])
+    
+  const {itemId} = useParams()
 
+  useEffect(() => {
+  const promesa = new Promise((resolve) =>
+  
+  setTimeout(() => {
+
+      resolve (productList.find((product) => product.id === parseInt(itemId)));
+  }, 2000)
+  );
+  promesa.then((product) => {
+  setItem(product);
+  });
+  },);
     
      return <ItemDetail item={item} />
     }

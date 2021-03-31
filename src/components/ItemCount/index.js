@@ -1,5 +1,5 @@
   
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 export function ItemCount({ stock, initial, onAdd }) {
   const [count, setCount] = useState(parseInt(initial));
@@ -38,7 +38,7 @@ export function ItemCount({ stock, initial, onAdd }) {
           +
         </button>
       </div>
-      <button
+      {/* <button
           disabled={count >= 1}
           className="btn btn-primary btn-sm botonTienda align-self-end"
           id="botonTienda"
@@ -46,7 +46,7 @@ export function ItemCount({ stock, initial, onAdd }) {
           onClick={onAdd}
         >
           Agregar al carrito
-        </button>
+        </button> */}
     </div>
   );
 }
