@@ -2,33 +2,27 @@ import './item.css'
 import ItemCount from '../ItemCount/index'
 import { Link } from "react-router-dom";
 
-const Item = ({ product }) => {
+const Item = ({ item }) => {
 
-    console.log(product.id + 'ITEM')
+  console.log('ITEM IMAGE ' + item.image)
     
   return (    
-    <div className="card card-tienda h-20 text-decoration-none"  id="store-card" data-id={product.id}>
-      <Link to={`/item/${product?.id}`} className="inline-flex">
-        <img src={process.env.PUBLIC_URL + product?.imagen} className="card-img-top" alt="..." />
+    <div className="card card-tienda h-20 text-decoration-none"  id="store-card" data-id={item.id}>
+      
+        <img src={item?.image} className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text" id="tituloProducto">
-            {product?.nombre}
+            {item?.title}
           </p>
           <p className="card-text" id="precioProducto">
-            {product?.precio}
+            {item?.price}
           </p>
+          <Link to={`/item/${item?.id}`} className="inline-flex">
+          <ItemCount stock={item?.stock} initial="2" />
+          </Link>
 
-          <ItemCount stock="6" initial="2" />
-
-          <button
-            className="btn btn-primary btn-sm botonTienda mt-auto"
-            id="botonTienda"
-            type="button"
-          >
-            Agregar al carrito
-          </button>
         </div>
-      </Link>
+ 
     </div>
   );
 };

@@ -13,31 +13,33 @@ export const NavBar = () => {
             </Link>
             <div  className="navbar-nav">
                 <NavLink exact to="/">
-                <a className="nav-item nav-link active" href="#navbar-nav">
+                
                     Home
-                </a>
+                
                 </NavLink>
-                <NavLink to={`category/PlaysTation`}>
-                <a className="nav-item nav-link" href="#navbar-nav">
+                <NavLink to={`/category/PlayStation`}>
+                
                     Playstation
-                </a>
+                
                 </NavLink>
-                <NavLink to={`category/xbox`}>
-                <a className="nav-item nav-link" href="#navbar-nav">
+                <NavLink to={`/category/xbox`}>
+                
                     Xbox
-                </a>
+                
                 </NavLink>
-                <NavLink to={`category/merch`}>
-                <a className="nav-item nav-link" href="#navbar-nav">
+                <NavLink to={`/category/merch`}>
+                
                     Merch
-                </a>
+                
                 </NavLink>
                 {/* <a className="nav-item nav-link" href="#navbar-nav">
                     Nosotros
                 </a> */}
             </div>
-
-             <CartWidget /> 
+            <Link to="/cart" className="header__cart">
+                <CartWidget />
+            </Link>
+             
         </nav>
     )
 }

@@ -1,7 +1,23 @@
 import Item from "../Item/Item"
+import PropTypes from "prop-types";
+import React from "react";
+import "./ItemList.css";
+export const ItemList = ({items=[]}) => {
 
+    console.log(items.id)
+    return (
+        <div className="itemList">
+            {items.map(item => <Item key={item.id}  item={item}/> )}
+        </div>
+    )
+}
 
+ItemList.propTypes = {
+    items: PropTypes.array,
+  };
+  
 
+/*
 const ItemList = ({productos}) => {
 
     console.log(productos.length)
@@ -26,4 +42,4 @@ const ItemList = ({productos}) => {
     );
 }
 
-export default ItemList
+export default ItemList*/

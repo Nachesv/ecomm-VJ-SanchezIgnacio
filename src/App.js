@@ -1,33 +1,42 @@
 
 import './App.css';
 import {NavBar} from './components/NavBar/NavBar.js';
-import {ItemListContainer} from './components/ItemListContainer/ItemListContainer.js';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer.js';
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer.js";
-import CartProvider from "./context/cartContext.js";
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import {useState} from 'react';
+
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {CartProvider} from "./context/CartContext";
+import {Cart} from './components/Cart/Cart.js'
+
+
 
 function App() {
   return (
     <CartProvider>
-      <Router>
-        <div className="App">
-          <NavBar /> 
-          <Switch>
-            <Route path="/" exact component={ItemListContainer}></Route>
-            
-            <Route path="/category/:categoryId">
-              <ItemListContainer greeting="Bienvenidos"/>
-            </Route>
+    <BrowserRouter >
+      <div className="App">
+      <NavBar />
+        <Switch >
+          <Route exact path='/'>
+            <ItemListContainer />
+          </Route>
 
-            <Route path="/item/:itemId">
+          <Route exact path='/category/:categoryId'>
+              <ItemListContainer />
+          </Route>
+
+
+          <Route exact path='/item/:itemId' component={ItemListContainer} >
               <ItemDetailContainer />
+          </Route>
+
+          <Route exact path="/cart">
+              <Cart />
             </Route>
 
-            
-          </Switch>
-        </div>
-      </Router>
+        </Switch>
+      </div>
+    </BrowserRouter>
     </CartProvider>
   );
 }
