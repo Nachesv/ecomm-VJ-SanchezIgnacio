@@ -9,40 +9,38 @@ export const CartProvider = ({children})=>{
     const [totalItems,setTotalItems] = useState(0);
     const [totalPrecio,setTotalPrecio] = useState(0)
 
-    useEffect(()=>{
+    useEffect(() => {
 
-        let totItems = 0;
         let precio = 0;
-
-        for(let cartItem of cart) {
+        let totItems = 0;
+        for (const cartItem of cart) {
             totItems += cartItem.quantity;
-            precio += cartItem.quantity * cartItem.item.price;
+            precio += cartItem.quantity * cartItem.item.precio;
         }
 
         setTotalItems(totItems);
-        setTotalPrecio(precio)
+        setTotalPrecio(precio);
 
-    },[cart])
+    }, [cart])
     
 
-    const addItem = (newItem, newQuantity)=>{
-
-        const prevCartItem = cart.find(e=> e.item.id === newItem.id)
-
-        let newCart;
-        let qty;
-        if (prevCartItem){
-            newCart = cart.filter(e => e.item.id !== newItem.id)
-            qty = prevCartItem.quantity + newQuantity;
-        }else{
-            newCart = [...cart]
-            qty =  newQuantity;
-        }
-
-        setCart([...newCart, 
-                { item: newItem , quantity: qty  }])
-        
-    } // agregar cierta cantidad de un ítem al carrito
+	const addItem = (item, quantity) => {
+		if (!isInCart(item.id)) {
+			const newCart = [...cart, { item: item, quantity: quantity }];
+			setCart(newCart);
+		} else {
+			setCart(
+				cart.map((cartItem) => {
+					if (cartItem.item.id === item.id) {
+						return { ...cartItem, quantity:cartItem.quantity + quantity };
+					} else {
+						return cartItem;
+					}
+				})
+			);
+		}
+        console.log(cart);
+	};
 
 
     const removeItem = (itemId) =>{
@@ -54,11 +52,9 @@ export const CartProvider = ({children})=>{
         setCart([])
     } // Remover todos los items
     
-    const isInCart = (id) =>{
-        const currentItem = cart.find(e=> e.item.id === id)
-
-        return currentItem ? true : false
-    } 
+    const isInCart = (id) => {
+		return cart.findIndex((cartItem) => cartItem.item.id === id) >= 0 ? true : false;
+	};
 
 
 

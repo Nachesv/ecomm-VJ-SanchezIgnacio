@@ -9,6 +9,12 @@ export const Cart = () => {
 
     const {cart,removeItem,totalItems,totalPrecio,clear} = useContext(CartContext)
 
+    console.log(cart)
+
+    cart.map(cartItem => {
+        console.log(cartItem)
+    })
+
     const generarOrden = () =>{
         const db = getFirestore();
 
@@ -63,26 +69,30 @@ export const Cart = () => {
         console.log(orden)
     }
 
+
+
     const noItemComp = <h2>No hay Items en el carrito <Link to='/'>Ir al home </Link> </h2>;
 
     if(totalItems === 0) return noItemComp
 
     return (
+
+
         <div>
-           <ul style={{listStyle:'none', padding:0}}>
+           <div style={{listStyle:'none', padding:0}}>
             {cart.map(cartItem => {
                 console.log('llegueaca')
                 return (
-                    <li key={cartItem.item.id}  style={{display:'flex',width:'40%',justifyContent:'space-between', margin:'5px auto'}}>
+                    <div key={cartItem.item.id}  style={{display:'flex',width:'40%',justifyContent:'space-between', margin:'5px auto'}}>
                         <div> Titulo:  {cartItem.item.title}  </div>
                         <div> cantidad: {cartItem.quantity} </div>
                         <button onClick={()=> removeItem(cartItem.item.id)}>borrar</button>
-                    </li>
+                    </div>
                 );
             }
             )}
 
-           </ul>
+            </div>
             <div>Total:{totalItems} y {totalPrecio}</div> 
             <button onClick={clear}>Borrar todo</button>  
 

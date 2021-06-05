@@ -18,7 +18,9 @@ const Item = ({ item }) => {
             {item?.price}
           </p>
           <Link to={`/item/${item?.id}`} className="inline-flex">
-          <ItemCount stock={item?.stock} initial="2" />
+          <button className="btn btn-primary btn-sm botonTienda mt-auto" type="button" >
+          Agregar carrito
+        </button>
           </Link>
 
         </div>

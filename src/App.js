@@ -26,13 +26,13 @@ function App() {
           </Route>
 
 
-          <Route exact path='/item/:itemId' component={ItemListContainer} >
+          <Route exact path='/item/:itemId'  >
               <ItemDetailContainer />
           </Route>
 
           <Route exact path="/cart">
               <Cart />
-            </Route>
+          </Route>
 
         </Switch>
       </div>

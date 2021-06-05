@@ -18,7 +18,7 @@ export default function ItemDetailContainer() {
     useEffect(() => {
       getItems(itemId).then((res) => {
         if (res.exists) {
-          setItem(res.data());
+          setItem({id:res.id,...res.data()});
         }
       });
       return;
@@ -26,7 +26,7 @@ export default function ItemDetailContainer() {
     console.log('existe?');
     
      return <> 
-     <ItemDetail item={item} />
+     <ItemDetail item={{id: itemId, ...item}} />
      </>/* JSX que devuelva un ItemDetail (desafío 6b) */
     }
 

@@ -7,9 +7,10 @@ import { NavLink, Link } from "react-router-dom";
 
 export const NavBar = () => {
     return (
+        <div>
         <nav className="navbar navbar-expand-lg navbar-light  barraNav">
             <Link exact to="/">
-            <h1>Hermes Gaming Journal</h1>
+                <h1>Hermes Gaming Journal</h1>
             </Link>
             <div  className="navbar-nav">
                 <NavLink exact to="/">
@@ -35,11 +36,17 @@ export const NavBar = () => {
                 {/* <a className="nav-item nav-link" href="#navbar-nav">
                     Nosotros
                 </a> */}
+                <NavLink to="/cart" className="header__cart">
+                    <   CartWidget />
+                </NavLink>
             </div>
-            <Link to="/cart" className="header__cart">
-                <CartWidget />
-            </Link>
+
              
         </nav>
+
+        {/* <Link to="/cart" className="header__cart">
+        <   CartWidget />
+        </Link> */}
+        </div>
     )
 }

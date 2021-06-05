@@ -8,7 +8,7 @@ import { CartContext } from "../../context/CartContext"
 export default function ItemDetail({ item }) {
     const [count, setCount] = useState(0)
 
-    const {addItem, cart} = useContext(CartContext);
+    const {addItem} = useContext(CartContext);
 
     const addHandler = (contador)=>{
         addItem(item, contador)
@@ -24,7 +24,7 @@ export default function ItemDetail({ item }) {
             <p>{item?.description}</p>
             <div>{item?.price}</div>
             { count === 0 ?
-                    <ItemCount stock="6" initial="2" onAdd={addHandler} />
+                    <ItemCount stock={item?.stock} initial={1} onAdd={addHandler} />
                         :
                         <Link to='/cart'>
                             <button>Terminar mi compra</button>
