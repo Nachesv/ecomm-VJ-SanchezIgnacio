@@ -7,16 +7,16 @@ import { CartContext } from '../../context/CartContext';
 
 export const CartWidget = () =>{
 
-  const { cart } = useContext(CartContext);
+  const {totalItems} = useContext(CartContext)
 
   return( 
     <div>
       <img src={logo} alt="Logo" className="carrito" style={{maxHeight: '30px'}}/>   
-      
+      {totalItems ? <span> ({totalItems})</span> : null }     
 
-      {cart.totalItems && (
+      {/* {cart.totalItems && (
         <span className="notification"> {cart.totalItems}</span>
-      )}
+      )} */}
     </div>
     
   );

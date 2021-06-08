@@ -11,9 +11,6 @@ export const Cart = () => {
 
     console.log(cart)
 
-    cart.map(cartItem => {
-        console.log(cartItem)
-    })
 
     const generarOrden = () =>{
         const db = getFirestore();

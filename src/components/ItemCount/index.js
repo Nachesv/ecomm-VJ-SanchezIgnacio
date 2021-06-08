@@ -38,7 +38,7 @@ export function ItemCount({ stock, initial, onAdd }) {
           +
         </button>
       </div>
-      <button className="btn btn-primary btn-sm botonTienda mt-auto" type="button" onClick={onAdd}>
+      <button className="btn btn-primary btn-sm botonTienda mt-auto" type="button" onClick={()=>onAdd(count)}>
           Agregar carrito
         </button>
     </div>
